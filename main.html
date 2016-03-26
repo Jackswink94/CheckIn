@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Clock In</title>
+	<title>Work Schedule</title>
   
 	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script type="text/javascript" src="l.js"></script>
  </head>
  
  <body>
-	<!--<div class="menu">     
+	<!--<div class="menu">
 	  <div class="icon-close">
         <img src=>
       </div>
@@ -22,14 +24,42 @@
     </div>-->
  
   <header class="container">
+  
+	
+  
     <div class="row">
       <h1 class="col-sm-8">Work Schedule</h1>
       <nav class="col-sm-4">
-        <!--<div class="log-in">--><p>Log in</p><!--</div>-->
-        <p>Sign up</p>
+        <nav>
+			<ul>
+				<li id="login">
+				<a id="login-trigger" href="#">
+					Log in 
+				</a>
+				<div id="login-content">
+					<form>
+					<fieldset id="inputs">
+						<input id="username" type="email" name="Email" placeholder="Your email address" required>   
+						<input id="password" type="password" name="Password" placeholder="Password" required>
+					</fieldset>
+					<fieldset id="actions">
+						<input type="submit" id="submit" value="Log in">
+						<label><input type="checkbox" checked="checked"> Keep me signed in</label>
+					</fieldset>
+					</form>
+				</div>                     
+				</li>
+				<li id="signup">
+				<a href="">Sign up</a>
+				</li>
+			</ul>
+		</nav>
         <p>About us</p>
       </nav>
     </div>
+	
+	
+	
   </header>
   
   <section class="jumbotron">
