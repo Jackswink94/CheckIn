@@ -1,21 +1,12 @@
-var main = function() {
-    $('.log-in').click(function() {
-        $('.menu').animate({
-            left: '0px'
-        },200);
-    $('body').animate({
-        left: '285px'
-    }, 200);
-    });
+$(document).ready(function(){
+  $('#login-trigger').click(function(){
+    $(this).next('#login-content').slideToggle();
+    $(this).toggleClass('active');          
     
-    $('.icon-close').click(function() {
-        $('.menu').animate({
-            left: '-285px'
-        },200);
-    $('body').animate({
-        left: '0px'
-    }, 200);
-    });
-};
+    if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
+      else $(this).find('span').html('&#x25BC;')
+    })
+});
 
 $(document).ready(main)
+
