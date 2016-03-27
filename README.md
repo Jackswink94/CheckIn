@@ -1,2 +1,2 @@
-# CheckIn
+# Schedule Me
 Work Scheduling
