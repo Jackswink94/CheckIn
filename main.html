@@ -1,34 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Work Schedule</title>
+	<title>Schedule Me</title>
   
 	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script type="text/javascript" src="loginAnimate.js"></script>
+	<script type="text/javascript" src="SignUpAnimate.js"></script>
+	<script type="text/javascript">
+		// This is called with the results from from FB.getLoginStatus().
+		function statusChangeCallback(response) {
+			console.log('statusChangeCallback');
+			console.log(response);
+			// The response object is returned with a status field that lets the
+			// app know the current login status of the person.
+			// Full docs on the response object can be found in the documentation
+			// for FB.getLoginStatus().
+			if (response.status === 'connected') {
+			// Logged into your app and Facebook.
+			testAPI();
+			} else if (response.status === 'not_authorized') {
+			// The person is logged into Facebook, but not your app.
+			document.getElementById('status').innerHTML = 'Please log ' +
+				'into this app.';
+			} else {
+			// The person is not logged into Facebook, so we're not sure if
+			// they are logged into this app or not.
+			document.getElementById('status').innerHTML = 'Please log ' +
+				'into Facebook.';
+			}
+		}
+
+		// This function is called when someone finishes with the Login
+		// Button.  See the onlogin handler attached to it in the sample
+		// code below.
+		function checkLoginState() {
+			FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+			});
+		}
+
+		window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '{your-app-id}',
+			cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+			xfbml      : true,  // parse social plugins on this page
+			version    : 'v2.5' // use graph api version 2.5
+		});
+
+		// Now that we've initialized the JavaScript SDK, we call 
+		// FB.getLoginStatus().  This function gets the state of the
+		// person visiting this page and can return one of three states to
+		// the callback you provide.  They can be:
+		//
+		// 1. Logged into your app ('connected')
+		// 2. Logged into Facebook, but not your app ('not_authorized')
+		// 3. Not logged into Facebook and can't tell if they are logged into
+		//    your app or not.
+		//
+		// These three cases are handled in the callback function.
+
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
+
+		};
+
+		// Load the SDK asynchronously
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		// Here we run a very simple test of the Graph API after login is
+		// successful.  See statusChangeCallback() for when this call is made.
+		function testAPI() {
+			console.log('Welcome!  Fetching your information.... ');
+			FB.api('/me', function(response) {
+			console.log('Successful login for: ' + response.name);
+			document.getElementById('status').innerHTML =
+				'Thanks for logging in, ' + response.name + '!';
+			});
+		}
+	</script>
  </head>
  
- <body>
-	<!--<div class="menu">
-	  <div class="icon-close">
-        <img src=>
-      </div>
-      <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>-->
- 
+ <body> 
   <header class="container">
-  
-	
-  
     <div class="row">
-      <h1 class="col-sm-8">Work Schedule</h1>
+      <h1 class="col-sm-8">Schedule Me</h1>
         <nav class="col-sm-4">
 			<ul>
 				<li id="login">
@@ -38,7 +104,7 @@
 				<div id="login-content">
 					<form>
 					<fieldset id="inputs">
-						<input id="username" type="email" name="Email" placeholder="Your email address" required>   
+						<input id="username" type="username" name="username" placeholder="Username" required>   
 						<input id="password" type="password" name="Password" placeholder="Password" required>
 					</fieldset>
 					<fieldset id="actions">
@@ -48,8 +114,40 @@
 					</form>
 				</div>                     
 				</li>
-				<li id="signup">
-				<a href="">Sign up</a>
+				<li id="Sign_up">
+				<a id="Sign_up-trigger" href="#">
+					Sign Up 
+				</a>
+				<div id="Sign_up-content">
+					<form>
+					<fieldset id="inputs">
+						<input id="email" type="email" name="Email" placeholder="Your email address" required> 
+						<input id="username" type="username" name="username" placeholder="Desired Username" required>
+						<input id="company" type="company" name="company" placeholder="Your company ID" required>
+						<input id="password" type="password" name="Password" placeholder="Password" required>
+						<input id="Cpassword" type="Cpassword" name="CPassword" placeholder="Confirm Password" required>
+					</fieldset>
+					<fieldset id="actions">
+						<input type="submit" id="submit" value="Sign Up">
+						<div class="sep">
+							<span class="or">OR</span>
+						</div>
+						<div class="connect">
+							<div class="social-buttons facebook">
+							<a href="#">
+								<span><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">Facebook</fb:login-button></span>
+							</a>
+							</div>
+							<div class="social-buttons google">
+							<a href="#">
+								<span>Google</span>
+							</a>
+							</div>
+						</div>
+					</fieldset>
+					</form>
+				</div>                     
+				</li>
 				</li>
 			</ul>
 		</nav>
@@ -64,14 +162,14 @@
       <div class = "row text-center">
         <h2>Your work scheduling solution!</h2>
      	  <h3>See what we can do for you</h3>
-    	  <a class="btn btn-primary" href="#" role="button">See all</a>
+    	  <a class="btn-primary" href="#" role="button">See all</a>
       </div>
     </div>
   </section>
   
    <footer class="container">
     <div class="row">
-      <p class="col-sm-4">&copy; 2016 Work Schedule</p>
+      <p class="col-sm-4">&copy; 2016 Schedule Me</p>
     </div>
   </footer>
   <!--<script src="file:///C:/Users/Jacks/Desktop/loginAnimate.js"></script>-->
