@@ -8,7 +8,7 @@ header {
 	padding: 20px 0;
 }
 
-/*-------------------------------------------------------------------------------------------------*/
+/*loginAnimate-------------------------------------------------------------------------------------------------*/
 
 nav ul {
   margin: 0;
@@ -30,8 +30,7 @@ nav #login {
   box-shadow: 1px 0 0 #fff;  
 }
 
-nav #login-trigger,
-nav #signup a {
+nav #login-trigger{
   display: inline-block;
   *display: inline;
   *zoom: 1;
@@ -44,17 +43,12 @@ nav #signup a {
   text-shadow: 0 1px 0 #fff; 
 }
 
-nav #signup a {
-  border-radius: 0 3px 3px 0;
-}
-
 nav #login-trigger {
   border-radius: 3px 0 0 3px;
 }
 
 nav #login-trigger:hover,
-nav #login .active,
-nav #signup a:hover {
+nav #login .active{
   background: #fff;
 }
 
@@ -145,7 +139,163 @@ nav li #login-content {
   right: 2px;
 }
 
-/*-------------------------------------------------------------------------------------------------*/
+/*SignUpAnimate-------------------------------------------------------------------------------------------------*/
+
+nav #Sign_up-trigger {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 25px;
+  line-height: 25px;
+  font-weight: bold;
+  padding: 0 8px;
+  text-decoration: none;
+  color: #444;
+  text-shadow: 0 1px 0 #fff; 
+}
+
+nav #Sign_up:hover 
+nav #Sign_up .active {
+  background: #fff;
+}
+
+nav #Sign_up-content {
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: 0;
+  z-index: 999;    
+  background: #fff;
+  background-image: linear-gradient(top, #fff, #eee);  
+  padding: 15px;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+  border-radius: 3px 0 3px 3px;
+}
+
+nav li #Sign_up-content {
+  right: 0;
+  width: 250px;  
+}
+
+#Sign_up #actions {
+  margin: 10px 0 0 0;
+}
+
+#Sign_up #submit {    
+  background-color: rgb(0, 0, 300);								/*color of login button*/
+  background-image: linear-gradient(top, #e97171, #d14545);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
+  border: 1px solid #7e1515;
+  float: left;
+  height: 30px;
+  padding: 0;
+  width: 100px;
+  cursor: pointer;
+  font: bold 14px Arial, Helvetica;
+  color: #fff;
+}
+
+#Sign_up #submit:hover,
+#Sign_up #submit:focus {    
+  background-color: #e97171;
+  background-image: linear-gradient(top, #d14545, #e97171);
+} 
+
+#Sign_up #submit:active {   
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset; 
+}
+
+#Sign_up #submit::-moz-focus-inner {
+  border: none;
+}
+
+#Sign_up label {
+  float: right;
+  line-height: 30px;
+}
+
+#Sign_up label input {
+  position: relative;
+  top: 2px;
+  right: 2px;
+}
+
+/*Social Media-------------------------------------------------------------------------------------------------*/
+
+.sep {
+	  	border: 1px solid $green-border;
+	  	position: relative;
+	  	margin: 50px 20px;
+	}
+
+	.or {
+	  	position: absolute;
+	  	width: 50px;
+	 	left: 50%;
+	  	background: $back-color;
+	  	text-align: center;
+	  	margin: -10px 0 0 -25px;
+	  	line-height: 0px;
+	}
+
+	.connect {
+	  	width: 174px;
+	  	margin: 0 auto;
+	  	text-align: relative;
+	}
+
+	.social-buttons {
+	  	display: inline-block;
+	  	min-width: 75px;
+	  	height: 0px;
+	  	margin: 0 5px 10px;
+	  	border-radius: 10px;
+	  	text-shadow: 1px 1px 5px #000000;
+
+	  	a {
+	  		display: block;
+	  		height: 100%;
+	  		text-decoration: none;
+	  		color: #FFFFFF;
+	  		padding: 10px 15px;
+		}
+
+		span {
+	  		font-size: 30px;
+	  		margin-left: 35px;
+		}
+	}
+
+	.facebook {
+	  	@include linear-gradient(#415EA3, #2E4A88);
+	  	
+	  	&:hover {
+			@include linear-gradient(#3B5591, #2A437C);
+		}
+
+		a {
+	  		background: url(../images/logo_fb_31x42.png) no-repeat 5% 10%;
+		}
+	}
+
+	.google {
+	  	@include linear-gradient(#41C0F3, #3FBAEC);
+	  	
+		&:hover {
+	  		@include linear-gradient(#3EB1DF, #3EAAD6);
+	  	}
+
+		a {
+	  		background: url(../images/logo_twitter_38x32.png) no-repeat 6% 25%;
+		}
+	}
+}
+/*-----------------------------------------------------------------------------------------------------------------*/
 
 header .row,
 footer .row {
@@ -162,6 +312,24 @@ header p {
   padding: 0 20px;
   margin: 0;
   display:inline;
+}
+
+.btn-primary {
+  background-color: rgb(0, 0, 300);								/*color of login button*/
+  background-image: linear-gradient(top, #e97171, #d14545);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
+  border: 1px solid #7e1515;
+  float: center;
+  height: 30px;
+  padding: 8px;
+  width: 100px;
+  cursor: pointer;
+  font: bold 16px Arial, Helvetica;
+  color: #fff;
 }
 
 .jumbotron {
